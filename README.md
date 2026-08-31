@@ -14,15 +14,19 @@ Read-only, one declared round, and every finding verified against the files befo
 
 ## Install
 
-Copy the folders you want into your project's skills directory:
+```bash
+npx skills add 8wavesrl/skills
+```
+
+The [skills CLI](https://skills.sh/8wavesrl/skills) detects the agents in your project
+(Claude Code, Codex, Cursor and many more), lets you pick the skills interactively, and pins
+them in `skills-lock.json`. Prefer a manual copy? The layout is the conventional
+`skills/<name>/SKILL.md`:
 
 ```bash
 git clone --depth 1 https://github.com/8wavesrl/skills /tmp/8wave-skills
 cp -R /tmp/8wave-skills/skills/review-with-codex .claude/skills/review-with-codex
 ```
-
-Or pin them with the skills sync tooling of your choice; the layout is the conventional
-`skills/<name>/SKILL.md`.
 
 ## Prerequisites
 
