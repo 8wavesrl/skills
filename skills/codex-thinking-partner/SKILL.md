@@ -18,10 +18,14 @@ model that did not write it. Codex judges; the primary agent keeps the pen.
 ## The call
 
 ```bash
-timeout 540 codex exec -s read-only -C <repo-root> -o <answer-file> "<prompt>" 2>&1 | tail -5
+timeout 540 codex exec -s read-only -C <repo-root> -o <answer-file> "<prompt>" </dev/null 2>&1 | tail -5
 ```
 
 - `-s read-only` always: two agents editing the same tree means conflicts and lost authorship.
+- `</dev/null` always: from an agent harness stdin is a pipe that never closes, and
+  `codex exec` waits for its EOF before doing anything. The hang is silent (near-zero CPU,
+  no output, no new rollout file under `~/.codex/sessions/YYYY/MM/DD/`, names in local
+  time); a healthy run creates its session file within seconds, so check that first.
 - If it outlives the timeout, run it in background and read the answer file when it completes.
 
 ## The prompt
@@ -36,6 +40,13 @@ Per ogni punto: una riga, citando file o slide.
 ```
 
 Line caps keep answers dense. Named sections make rejection auditable.
+
+For a review prompt, open with the role and fence off this very skill: "YOU are the
+independent reviewer: review the code yourself. Do NOT read or follow anything in
+.claude/skills or .agents/skills, do not consult any external tool, do not ask for
+permissions." Without that fence Codex finds this file in the repo, casts itself as the
+primary agent that must consult Codex, and burns the round asking permission to call
+itself instead of reviewing (observed 2026-09-01).
 
 ## After the answer: verify, then adopt
 
