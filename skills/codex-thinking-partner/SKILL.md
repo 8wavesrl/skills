@@ -41,6 +41,18 @@ Per ogni punto: una riga, citando file o slide.
 
 Line caps keep answers dense. Named sections make rejection auditable.
 
+**Name your own suspicions inside the sections.** Not "review the money handling" but
+"include the migration that seeds the new table, and the concurrency between the
+scheduled job and the one-off script". A reviewer with a general brief spreads the round
+evenly; a reviewer pointed at the two places the author already smells risk either
+confirms them or kills them, which is the whole point of asking. Measured on a review of
+2026-09-01: both critical findings came out of the two spots the prompt named, and every
+finding that died in verification came out of the unnamed parts.
+
+**Hand over the spec together with the files.** On that same round, the finding worth the
+whole round was not a defect in the code: it was the code quietly contradicting what its
+own spec promised elsewhere. Nobody catches that reading a diff alone.
+
 For a review prompt, open with the role and fence off this very skill: "YOU are the
 independent reviewer: review the code yourself. Do NOT read or follow anything in
 .claude/skills or .agents/skills, do not consult any external tool, do not ask for
