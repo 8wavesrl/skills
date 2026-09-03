@@ -43,6 +43,21 @@ Consult Codex on the same diff following the `codex-thinking-partner` skill: rea
 round, narrow prompt. Verify each of its findings against the files, adopt what survives,
 reject the rest with reasons.
 
+**On a security or data-protection change this step gates the commit**, not the PR and not the
+release. Measured on 2026-09-03, on a phase that closed five tenant-boundary defects: the round
+was skipped because the account had hit its usage limit, the work shipped that evening, and the
+round the next day found two GDPR erasures the phase had left half closed, plus two queries its
+own fix had missed in the very file it was correcting. The author had read those files three
+times. Waiting for the quota to reset would have cost an afternoon; not waiting put incomplete
+erasures in production. This does not contradict step 5: the agent still does not commit on its
+own, it means the round is not something to catch up on afterwards.
+
+**Pull on the mild findings first.** The two findings that paid for their whole round that day
+both arrived phrased as nuance rather than as defects. "This measures reachability, not the
+exact charge" turned out to mean the script asked its question by a cursor while both programs
+that act on the answer ask by a marker. A reviewer who did not write the code states things
+carefully; establishing the severity is your job, not theirs.
+
 ## 5. Close
 
 - Fix what survived review, re-run the checks that a fix could have invalidated.

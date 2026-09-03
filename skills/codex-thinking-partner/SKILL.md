@@ -27,6 +27,13 @@ timeout 540 codex exec -s read-only -C <repo-root> -o <answer-file> "<prompt>" <
   no output, no new rollout file under `~/.codex/sessions/YYYY/MM/DD/`, names in local
   time); a healthy run creates its session file within seconds, so check that first.
 - If it outlives the timeout, run it in background and read the answer file when it completes.
+- **Size the timeout to the surface.** 540s covers a handful of files. It does not cover ten
+  services plus their tests: that one needed 1800s, and the first attempt died mid-read
+  (2026-09-03). A run that is still working keeps growing its rollout file.
+- **Judge the outcome by the answer file, never by the exit code.** Piped into `tail`,
+  `codex exec` exits 0 when the timeout kills it and when the account is out of quota. An
+  empty `-o` file is the only reliable "no answer", and both failures look identical from
+  the shell.
 
 ## The prompt
 
