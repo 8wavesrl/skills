@@ -64,3 +64,11 @@ carefully; establishing the severity is your job, not theirs.
 - Report: findings fixed, findings rejected (yours and Codex's) with one-line reasons, checks
   output as it is. A skipped check is reported as skipped, never implied as passed.
 - Do not commit: commits happen only when the user asks.
+
+**An unverified fix is not a fix.** Measured on 2026-09-13: a finding about a sync that kept an
+expired cursor for ever was fixed during this very step by a script that then stopped on a
+later anchor and saved nothing. The report said the finding was closed, the file had never
+changed, and the next round found the same defect untouched. Read every fix back from the file
+that holds it (grep for the line you believe you wrote) before writing it down as fixed. A
+finding marked fixed with nothing behind it is worse than one left open, because it is the one
+nobody looks at again.
