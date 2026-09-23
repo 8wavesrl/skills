@@ -106,8 +106,8 @@ roadmap row.
    (other specs, the roadmap, READMEs). Grep the repo for the file name to find them.
 4. Remove its row from the roadmap. If the table is now empty, restore the placeholder row and
    the empty-roadmap sentence.
-5. User-facing work also needs a release note: use the project's `changelog` skill if it has
-   one, otherwise its `CHANGELOG.md` convention. If neither exists, tell the user and skip.
+5. User-facing work also needs a release note: use the `changelog` skill, in the same
+   language as the existing release notes.
 
 ## Archive (superseded or dropped)
 

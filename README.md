@@ -12,6 +12,7 @@ Read-only, one declared round, and every finding verified against the files befo
 | [`codex-thinking-partner`](skills/codex-thinking-partner/SKILL.md) | A second opinion on a diff, design or document: one round, verified, adopted or rejected with reasons |
 | [`review-with-codex`](skills/review-with-codex/SKILL.md) | Full-diff pre-commit review (regressions, readability, DRY, pre-existing defects) with Codex as independent verifier |
 | [`new-spec`](skills/new-spec/SKILL.md) | Create, update, release or archive feature specs and keep the roadmap in sync, in any language and specs folder |
+| [`changelog`](skills/changelog/SKILL.md) | User-facing release notes, one file per version, folded into the pending version until it ships |
 
 ## Install
 
