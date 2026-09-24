@@ -90,6 +90,8 @@ rows to apply. Change nothing in this step.
   with the same command, or comes back with `npx skills experimental_install`.
 - A skill a Claude Code plugin already provides loses its standalone copy for Claude only
   (`-a claude-code`): plugins are Claude-only, the other agents keep the CLI install.
+- A plugin the organization syncs from claude.ai is hidden by any installed plugin with the
+  same name, which then stops following the organization's updates: uninstall the local one.
 - A new lint rule: add it, autofix, then run the project's type check, tests and build. An
   autofix that rewrites imports can break code the linter cannot see.
 - Edit context files with anchored edits and read every change back from the file.

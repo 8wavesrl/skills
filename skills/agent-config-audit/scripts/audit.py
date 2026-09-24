@@ -373,7 +373,19 @@ def audit_skills(repo, report):
                 'standalone copy for Claude Code (`npx skills remove <name> -a claude-code`).',
             )
         elif len(plugins) > 1:
-            report.add('Skills', 'fix', f'`{name}` comes from several plugins: {sources}.')
+            plugin_names = {p.split('@')[0] for p in plugins}
+            synced = [p for p in plugins if p.endswith('@synced')]
+            hidden = [p for p in synced if any(o != p and o.split('@')[0] == p.split('@')[0] for o in plugins)]
+            if hidden and len(plugin_names) == 1:
+                # Claude Code loads the same-named plugin from any other source instead
+                others = ', '.join(f'`{p}`' for p in plugins if p not in hidden)
+                report.add(
+                    'Skills', 'review',
+                    f'`{name}`: the claude.ai copy `{hidden[0]}` is hidden by {others}, which loads '
+                    'instead and does not follow the sync. Uninstall it to use the organization\'s copy.',
+                )
+            else:
+                report.add('Skills', 'fix', f'`{name}` comes from several plugins: {sources}.')
     total = sum(len(r['description']) for r in visible.values())
     report.add(
         'Skills', 'info',
