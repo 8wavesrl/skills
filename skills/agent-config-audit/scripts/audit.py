@@ -173,6 +173,15 @@ def plugin_skills(repo):
             if skills_dir.is_dir():
                 for skill_md in sorted(skills_dir.glob('*/SKILL.md')):
                     provided[skill_md.parent.name].append(plugin)
+    # Plugins synced from claude.ai (organization or personal) live apart, one folder per
+    # generation, and load only in sessions signed in with the Claude account
+    for manifest in sorted((CLAUDE_HOME / 'plugins' / 'synced').glob('*/manifest.json')):
+        for entry in (read_json(manifest) or {}).get('plugins') or []:
+            name = entry.get('name', '')
+            folder = manifest.parent / f'{name}~g{entry.get("generation")}'
+            skills_dir = (folder if folder.is_dir() else manifest.parent / name) / 'skills'
+            for skill_md in sorted(skills_dir.glob('*/SKILL.md')):
+                provided[skill_md.parent.name].append(f'{name}@synced')
     return provided
 
 
