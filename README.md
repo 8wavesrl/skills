@@ -13,6 +13,7 @@ Read-only, one declared round, and every finding verified against the files befo
 | [`review-with-codex`](skills/review-with-codex/SKILL.md) | Full-diff pre-commit review (regressions, readability, DRY, pre-existing defects) with Codex as independent verifier |
 | [`new-spec`](skills/new-spec/SKILL.md) | Create, update, release or archive feature specs and keep the roadmap in sync, in any language and specs folder |
 | [`changelog`](skills/changelog/SKILL.md) | User-facing release notes, one file per version, folded into the pending version until it ships |
+| [`agent-config-audit`](skills/agent-config-audit/SKILL.md) | Audit what the agents load (context files, skills and their lock, MCP servers, hooks, memory), measure real usage and propose what to fix, prune or hand over to lint and hooks |
 
 ## Install
 
