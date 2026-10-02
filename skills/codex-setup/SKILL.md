@@ -22,7 +22,8 @@ If both succeed, skip to the smoke test. `codex doctor` diagnoses a broken insta
 npm install -g @openai/codex
 ```
 
-Requires Node 18+. After install re-run `codex --version`.
+Requires Node 18+. After install re-run `codex --version`. The calls in `thinking-partner`
+wrap codex in `timeout`, which stock macOS lacks: `brew install coreutils` provides it.
 
 ## 3. Authenticate
 
@@ -37,10 +38,11 @@ Verify with `codex login status`. Never ask the user to paste the key into the c
 ## 4. Smoke test, read-only
 
 ```bash
-codex exec -s read-only --ephemeral --skip-git-repo-check "Reply with exactly: OK"
+codex exec -s read-only --ephemeral --skip-git-repo-check "Reply with exactly: OK" </dev/null
 ```
 
 Expect `OK` in the final message. `--ephemeral` keeps the test out of session history.
+`</dev/null` keeps it from hanging when run from an agent, whose stdin never closes.
 
 ## Defaults that matter
 
@@ -51,4 +53,4 @@ Expect `OK` in the final message. `--ephemeral` keeps the test out of session hi
   `-o <file>` (`--output-last-message`) instead of scraping the log.
 - User config lives in `~/.codex/config.toml`; do not edit it without being asked.
 
-For how to actually consult it, see the `codex-thinking-partner` skill.
+For how to actually consult it, see the `thinking-partner` skill.
