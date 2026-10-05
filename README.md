@@ -15,6 +15,7 @@ Read-only, one declared round, and every finding verified against the files befo
 | [`new-spec`](skills/new-spec/SKILL.md) | Create, update, release or archive feature specs and keep the roadmap in sync, in any language and specs folder |
 | [`changelog`](skills/changelog/SKILL.md) | User-facing release notes, one file per version, folded into the pending version until it ships |
 | [`agent-config-audit`](skills/agent-config-audit/SKILL.md) | Audit what the agents load (context files, skills and their lock, MCP servers, hooks, memory), measure real usage and propose what to fix, prune or hand over to lint and hooks |
+| [`de-slopify`](skills/de-slopify/SKILL.md) | Find the tells that make a UI look AI-generated and replace them with precise, element-by-element fixes drawn from the project's design system, never from a house taste |
 
 ## Install
 
