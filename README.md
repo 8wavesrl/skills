@@ -11,7 +11,7 @@ Read-only, one declared round, and every finding verified against the files befo
 |---|---|
 | [`codex-setup`](skills/codex-setup/SKILL.md) | Install, authenticate and smoke-test the OpenAI Codex CLI, read-only by default |
 | [`thinking-partner`](skills/thinking-partner/SKILL.md) | A second opinion on a diff, design or document from Codex, or from the model you pick when Codex is missing or out of quota: one round, verified, adopted or rejected with reasons |
-| [`full-review`](skills/full-review/SKILL.md) | Full-diff pre-commit review (regressions, readability, DRY, pre-existing defects), Claude Code's `/code-review` as first pass where available, an independent model as verifier |
+| [`full-review`](skills/full-review/SKILL.md) | Full-diff pre-commit review (regressions, readability, DRY, pre-existing defects), no reviewer fan-out (`/code-review` only on request), an independent model verifying the already fixed diff |
 | [`new-spec`](skills/new-spec/SKILL.md) | Create, update, release or archive feature specs and keep the roadmap in sync, in any language and specs folder |
 | [`changelog`](skills/changelog/SKILL.md) | User-facing release notes, one file per version, folded into the pending version until it ships |
 | [`agent-config-audit`](skills/agent-config-audit/SKILL.md) | Audit what the agents load (context files, skills and their lock, MCP servers, hooks, memory), measure real usage and propose what to fix, prune or hand over to lint and hooks |
